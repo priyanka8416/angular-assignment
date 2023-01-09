@@ -1,9 +1,32 @@
-<h2>User Details</h2>
-
-<div *ngIf="user">
-  <p><label for="displayname">Display Name:</label> {{ user.displayName }}</p>
-  <p><label for="givenname">Given Name:</label> {{ user.givenName }}</p>
-  <p><label for="mail">Mail:</label> {{ user.mail }}</p>
-  <p><label for="details">Details:</label> {{ user.details }}</p>
-  <button type="submit">Edit Data</button>
-</div>
+<div *ngIf="user && !editUser">
+    <h2>User Details</h2>
+    <p><label for="displayname">Display Name:</label> {{ user.displayName }}</p>
+    <p><label for="givenname">Given Name:</label> {{ user.givenName }}</p>
+    <p><label for="mail">Mail:</label> {{ user.mail }}</p>
+    <p><label for="details">Details:</label> {{ user.details }}</p>
+    <button type="submit" (click)="getUserData()">Edit Data</button>
+  </div>
+  
+  <div *ngIf="editUser">
+    <h2>User Form</h2>
+    <form [formGroup]="userForm">
+      <p>
+        <label>Display Name: </label>
+        <input type="text" formControlName="displayName" />
+      </p>
+      <p>
+        <label>Given Name: </label>
+        <input type="text" formControlName="givenName" />
+      </p>
+      <p>
+        <label>Mail: </label>
+        <input type="text" formControlName="mail" />
+      </p>
+      <p>
+        <label>Details: </label>
+        <textarea rows="5" cols="30" formControlName="details"></textarea>
+      </p>
+      <button type="submit" (click)="setUserData(userForm)">Save Data</button>
+    </form>
+  </div>
+  
