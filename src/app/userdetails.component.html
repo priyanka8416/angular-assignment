@@ -1,1 +1,9 @@
-assignment details works
+<h2>User Details</h2>
+
+<div *ngIf="user">
+  <p><label for="displayname">Display Name:</label> {{ user.displayName }}</p>
+  <p><label for="givenname">Given Name:</label> {{ user.givenName }}</p>
+  <p><label for="mail">Mail:</label> {{ user.mail }}</p>
+  <p><label for="details">Mail:</label> {{ user.details }}</p>
+  <button type="submit">Edit Data</button>
+</div>
