@@ -1,0 +1,28 @@
+<h2>User List</h2>
+<div class="filter-by-id">
+  <label for="id">Filter by ID: </label>
+  <select name="id" id="id" (change)="getFilteredValue($event)">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+</div>
+<table>
+  <tr highlight>
+    <th>ID</th>
+    <th>Display Name</th>
+    <th>Given Name</th>
+    <th>Mail</th>
+    <th>Details</th>
+  </tr>
+  <tr *ngFor="let user of users | sort: 'asc':'displayName'">
+    <td>{{ user.id }}</td>
+    <td>
+      <a [routerLink]="['/users', user.id]">{{ user.displayName }}</a>
+    </td>
+    <td>{{ user.givenName }}</td>
+    <td>{{ user.mail }}</td>
+    <td>{{ user.details }}</td>
+  </tr>
+</table>
